@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TicketModule</string>
+    <string name="txt_ticketList">لیست تیکت ها</string>
+    <string name="txt_ticketNumber">شماره تیکتا</string>
+    <string name="txt_btnSend">ارسال</string>
+    <string name="txt_editTextHint">متن را وارد کنید … </string>
+    <string name="txt_subjectEditTextHint">موضوع:</string>
+    <string name="txt_bodyEditTextHint">متن تیکت:</string>
+    <string name="txt_createTicket">ایجاد تیکت</string>
+    <string name="txt_cancelCreateTicket">انصراف</string>
+    <string name="txt_toast_message">متن را وارد کنید</string>
+</resources>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="BindingLayoutTicketHead">
+        <variable
+            name="ticketHead"
+            type="com.example.ticketmodule.model.TicketHead" />
+    </data>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="5dp"
+        android:layout_margin="@dimen/standard_margin">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txt_ticketNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@{`شماره تیکت : `+ticketHead.id}"
+                android:textSize="@dimen/large_font_size"
+                android:textColor="@android:color/black"
+                android:layout_marginEnd="@dimen/small_margin"/>
+            <TextView
+                android:id="@+id/txt_userId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_ticketNumber"
+                android:text="@{`آیدی کاربر : `+ticketHead.user_id}"
+                android:textSize="@dimen/large_font_size"
+                android:textColor="@android:color/black"
+                android:layout_marginEnd="@dimen/small_margin"/>
+            <TextView
+                android:id="@+id/txt_subject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_userId"
+                android:text="@{`موضوع : `+ticketHead.subject}"
+                android:textSize="@dimen/large_font_size"
+                android:textColor="@android:color/black"
+                android:layout_marginEnd="@dimen/small_margin"/>
+            <TextView
+                android:id="@+id/txt_createdAt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_subject"
+                android:text="@{`تاریخ ارسال : `+ticketHead.created_at}"
+                android:textSize="@dimen/large_font_size"
+                android:textColor="@android:color/black"
+                android:layout_marginEnd="@dimen/small_margin"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</layout>
