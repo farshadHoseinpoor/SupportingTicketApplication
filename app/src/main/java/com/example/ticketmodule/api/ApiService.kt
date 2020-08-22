@@ -23,15 +23,24 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("new-ticket")
-    fun createTicket(@Field("user_id") userId: Int, @Field("subject") subject: String, @Field("body") body: String): Call<HttpGenericResponse>
+    fun createTicket(
+        @Field("user_id") userId: Int,
+        @Field("subject") subject: String,
+        @Field("body") body: String
+    ): Call<HttpGenericResponse>
 
     @FormUrlEncoded
     @POST("new-ticket-detail")
-    fun createTicketDetail(@Field("user_id") userId:Int,@Field("ticket_id") ticketId:Int,@Field("body") body:String) : Call<HttpGenericResponse>
+    fun createTicketDetail(
+        @Field("user_id") userId: Int,
+        @Field("ticket_id") ticketId: Int,
+        @Field("body") body: String
+    ): Call<HttpGenericResponse>
 
     companion object {
-      // const val BASE_URL = "http://192.168.1.11/ticket/api/" // for linkSys
-          const val BASE_URL = "http://93.118.100.44:3370/ticket/api/"  //for 4g+
+
+        const val BASE_URL = "http://93.118.100.44:3370/ticket/api/"
+
         fun create(): ApiService {
             val logger = HttpLoggingInterceptor()
             logger.level = HttpLoggingInterceptor.Level.BODY
@@ -51,7 +60,11 @@ interface ApiService {
     }
 }
 
-fun getTicketHeadApi(userID: Int, apiService: ApiService, onSuccess: (tickets: ArrayList<TicketHead>?) -> Unit) {
+fun getTicketHeadApi(
+    userID: Int,
+    apiService: ApiService,
+    onSuccess: (tickets: ArrayList<TicketHead>?) -> Unit
+) {
 
     apiService.getTicketHead(userID).enqueue(object : Callback<HttpGenericResponse> {
         override fun onResponse(
@@ -77,10 +90,17 @@ fun getTicketHeadApi(userID: Int, apiService: ApiService, onSuccess: (tickets: A
     })
 }
 
-fun getTicketDetailApi(ticket_id: Int,apiService: ApiService, onSuccess: (details: ArrayList<TicketDetail>?) -> Unit) {
+fun getTicketDetailApi(
+    ticket_id: Int,
+    apiService: ApiService,
+    onSuccess: (details: ArrayList<TicketDetail>?) -> Unit
+) {
     apiService.getTicketDetail(ticket_id).enqueue(object : Callback<HttpGenericResponse> {
 
-        override fun onResponse(call: Call<HttpGenericResponse>, response: Response<HttpGenericResponse>) {
+        override fun onResponse(
+            call: Call<HttpGenericResponse>,
+            response: Response<HttpGenericResponse>
+        ) {
             Log.d("ticketDetail", response.body().toString())
             if (response.isSuccessful) {
                 response.body()?.let {
@@ -101,11 +121,20 @@ fun getTicketDetailApi(ticket_id: Int,apiService: ApiService, onSuccess: (detail
 }
 
 
-fun createNewTicketApi(userID: Int, subject: String, body: String, apiService: ApiService, onSuccess: (texts: String) -> Unit) {
+fun createNewTicketApi(
+    userID: Int,
+    subject: String,
+    body: String,
+    apiService: ApiService,
+    onSuccess: (texts: String) -> Unit
+) {
     apiService.createTicket(userID, subject, body).enqueue(object : Callback<HttpGenericResponse> {
 
-        override fun onResponse(call: Call<HttpGenericResponse>, response: Response<HttpGenericResponse>) {
-            Log.d("createTicket",response.body().toString())
+        override fun onResponse(
+            call: Call<HttpGenericResponse>,
+            response: Response<HttpGenericResponse>
+        ) {
+            Log.d("createTicket", response.body().toString())
             if (response.isSuccessful) {
                 response.body()?.let {
                     onSuccess(it.message)
@@ -114,6 +143,7 @@ fun createNewTicketApi(userID: Int, subject: String, body: String, apiService: A
                 onSuccess("")
             }
         }
+
         override fun onFailure(call: Call<HttpGenericResponse>, t: Throwable) {
             Log.d("createTicket", "onFailure")
             onSuccess("")
@@ -122,29 +152,39 @@ fun createNewTicketApi(userID: Int, subject: String, body: String, apiService: A
     })
 
 
-
 }
 
 
-fun createTicketDetailApi(userId:Int,ticketId:Int,body:String,apiService: ApiService,onSuccess:(texts:String) -> Unit){
-    apiService.createTicketDetail(userId,ticketId,body).enqueue(object :Callback<HttpGenericResponse>{
+fun createTicketDetailApi(
+    userId: Int,
+    ticketId: Int,
+    body: String,
+    apiService: ApiService,
+    onSuccess: (texts: String) -> Unit
+) {
+    apiService.createTicketDetail(userId, ticketId, body)
+        .enqueue(object : Callback<HttpGenericResponse> {
 
-        override fun onResponse(call: Call<HttpGenericResponse>, response: Response<HttpGenericResponse>) {
-            Log.d("createTicketDetail",response.body().toString())
-            if (response.isSuccessful){
-                response.body()?.let {
-                    onSuccess(it.message)
+            override fun onResponse(
+                call: Call<HttpGenericResponse>,
+                response: Response<HttpGenericResponse>
+            ) {
+                Log.d("createTicketDetail", response.body().toString())
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        onSuccess(it.message)
 
+                    }
+                } else {
+                    onSuccess("")
                 }
-            }else{
-                onSuccess("")
+
             }
 
-        }
-        override fun onFailure(call: Call<HttpGenericResponse>, t: Throwable) {
-            Log.d("createTicketDetail","onFailure")
-            onSuccess("")
+            override fun onFailure(call: Call<HttpGenericResponse>, t: Throwable) {
+                Log.d("createTicketDetail", "onFailure")
+                onSuccess("")
 
-        }
-    })
+            }
+        })
 }

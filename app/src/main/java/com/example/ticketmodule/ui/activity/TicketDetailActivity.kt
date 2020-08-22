@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ticketmodule.R
-import com.example.ticketmodule.ViewModel.TicketDetailViewModel
+import com.example.ticketmodule.viewModel.TicketDetailViewModel
 import com.example.ticketmodule.adapter.TicketDetailAdapter
 import com.example.ticketmodule.api.ApiService
 import com.example.ticketmodule.databinding.BindingActivityTicketDetail

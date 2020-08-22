@@ -10,8 +10,6 @@ import com.example.ticketmodule.ui.activity.TicketListActivity
 class UpdateWorker (context: Context,workerParameters: WorkerParameters) : Worker(context,workerParameters){
 
     override fun doWork(): Result {
-       val ticketListActivity=TicketListActivity()
-       ticketListActivity.initUi()
 
         return Result.success()
     }

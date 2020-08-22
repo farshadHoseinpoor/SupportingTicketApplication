@@ -3,7 +3,6 @@ package com.example.ticketmodule.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ticketmodule.R
 import com.example.ticketmodule.databinding.BindingLayoutTicketHead
 import com.example.ticketmodule.model.TicketHead
 

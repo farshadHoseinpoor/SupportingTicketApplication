@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
-import com.example.ticketmodule.ViewModel.BaseViewModel
+import com.example.ticketmodule.viewModel.BaseViewModel
 
 
 abstract class BaseActivity<E : ViewDataBinding, T : BaseViewModel> : AppCompatActivity(),

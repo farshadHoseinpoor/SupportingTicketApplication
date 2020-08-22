@@ -9,19 +9,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
 import com.example.ticketmodule.R
-import com.example.ticketmodule.ViewModel.TicketHeadViewModel
+import com.example.ticketmodule.viewModel.TicketHeadViewModel
 import com.example.ticketmodule.adapter.TicketHeadAdapter
 import com.example.ticketmodule.api.ApiService
 import com.example.ticketmodule.databinding.BindingActivityTicketList
 import com.example.ticketmodule.tools.di.AppModule
 import com.example.ticketmodule.tools.di.DaggerAppComponent
-import com.example.ticketmodule.tools.utils.UpdateWorker
 import kotlinx.android.synthetic.main.activity_ticket_list.*
 import kotlinx.android.synthetic.main.layout_new_ticket_dialog.view.*
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 
@@ -64,15 +60,6 @@ class TicketListActivity : BaseActivity<BindingActivityTicketList, TicketHeadVie
 
     override fun getViewModelFactory(): ViewModelProvider.Factory =
         TicketHeadViewModel.Factory(sharedPreferences, apiService)
-
-    fun backgroundUpdateWorker() {
-        val updateWorker = OneTimeWorkRequestBuilder<UpdateWorker>()
-            .setInitialDelay(5, TimeUnit.MILLISECONDS)
-            .build()
-
-        WorkManager.getInstance(this).enqueue(updateWorker)
-
-    }
 
     override fun initUi() {
         var isInit = false

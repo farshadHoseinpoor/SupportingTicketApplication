@@ -1,4 +1,4 @@
-package com.example.ticketmodule.ViewModel
+package com.example.ticketmodule.viewModel
 
 
 import android.content.SharedPreferences
