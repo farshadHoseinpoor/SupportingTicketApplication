@@ -29,7 +29,7 @@ class TicketDetailViewModel(val sharedPreferences: SharedPreferences,val apiServ
         ticketId=id
         statusLiveData.postValue(true)
         isHaveErrorLiveData.postValue(false)
-        getTicketDetailApi(id,apiService,onSuccess = {
+        getTicketDetailApi(apiService =  apiService,ticket_id = id,onSuccess = {
             if (it!=null){
                ticketDetailsLiveData.postValue(it)
             }else isHaveErrorLiveData.postValue(true)

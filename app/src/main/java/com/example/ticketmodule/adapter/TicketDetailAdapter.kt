@@ -3,7 +3,6 @@ package com.example.ticketmodule.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ticketmodule.databinding.BindingLayoutTicketDetail

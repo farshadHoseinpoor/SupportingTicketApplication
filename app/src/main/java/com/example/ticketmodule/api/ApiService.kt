@@ -30,8 +30,8 @@ interface ApiService {
     fun createTicketDetail(@Field("user_id") userId:Int,@Field("ticket_id") ticketId:Int,@Field("body") body:String) : Call<HttpGenericResponse>
 
     companion object {
-       const val BASE_URL = "http://192.168.1.11/ticket/api/" // for linkSys
-      //    const val BASE_URL = "http://93.118.100.44/ticket/api/"  //for 4g+
+      // const val BASE_URL = "http://192.168.1.11/ticket/api/" // for linkSys
+          const val BASE_URL = "http://93.118.100.44:3370/ticket/api/"  //for 4g+
         fun create(): ApiService {
             val logger = HttpLoggingInterceptor()
             logger.level = HttpLoggingInterceptor.Level.BODY
@@ -121,7 +121,6 @@ fun createNewTicketApi(userID: Int, subject: String, body: String, apiService: A
 
     })
 
-    // TODO: 20/07/19   soal beporsam  on success karesh chiye ?  hamchenin factory karesh chiye
 
 
 }
